@@ -1,0 +1,9 @@
+﻿  AIC_nomosaic_patch.cpp
+D:\Users\User\source\AIC_nomosaic_patch\AIC_nomosaic_patch\AIC_nomosaic_patch.cpp(268,50): warning C4311: “类型强制转换”: 从“HGDIOBJ”到“LONG”的指针截断
+D:\Users\User\source\AIC_nomosaic_patch\AIC_nomosaic_patch\AIC_nomosaic_patch.cpp(268,50): warning C4302: “类型强制转换”: 从“HGDIOBJ”到“LONG”截断
+  正在生成代码
+  1 of 1430 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  已完成代码的生成
+  AIC_nomosaic_patch.vcxproj -> D:\Users\User\source\AIC_nomosaic_patch\x64\Release\AIC_nomosaic_patch.exe
