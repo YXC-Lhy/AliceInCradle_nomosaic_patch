@@ -117,30 +117,49 @@ namespace AIC_nomosaic_patch_cmd
                 }
 
                 // -----------------------
-                // 修改方法 IL（只改 true/false）
+                // 修改方法 IL（只改最终返回值）
                 // -----------------------
-                bool already = true;
-                foreach (var instr in method.Body.Instructions)
+                var instrs = method.Body.Instructions;
+
+                int retIndex = -1;
+
+                // 找最后一个 ret
+                for (int i = instrs.Count - 1; i >= 0; i--)
                 {
-                    if ((instr.OpCode == OpCodes.Ldc_I4_1 && targetValue == false) ||
-                        (instr.OpCode == OpCodes.Ldc_I4_0 && targetValue == true))
+                    if (instrs[i].OpCode == OpCodes.Ret)
                     {
-                        instr.OpCode = targetValue.Value ? OpCodes.Ldc_I4_1 : OpCodes.Ldc_I4_0;
-                        already = false;
-                    }
-                    else if ((instr.OpCode == OpCodes.Ldc_I4_1 && targetValue == true) ||
-                             (instr.OpCode == OpCodes.Ldc_I4_0 && targetValue == false))
-                    {
-                        // 已经是目标值，不改
-                        continue;
+                        retIndex = i;
+                        break;
                     }
                 }
 
-                if (already)
+                if (retIndex <= 0)
+                {
+                    Console.WriteLine("notfound");
+                    return;
+                }
+
+                // 找 ret 前一条指令
+                var prev = instrs[retIndex - 1];
+
+                // 必须是 ldc.i4.0 或 ldc.i4.1
+                if (prev.OpCode != OpCodes.Ldc_I4_0 && prev.OpCode != OpCodes.Ldc_I4_1)
+                {
+                    Console.WriteLine("notfound");
+                    return;
+                }
+
+                // 判断是否已经是目标值
+                bool currentValue = prev.OpCode == OpCodes.Ldc_I4_1;
+
+                if (currentValue == targetValue)
                 {
                     Console.WriteLine("repeat");
                     return;
                 }
+
+                // 修改最终返回值
+                prev.OpCode = targetValue.Value ? OpCodes.Ldc_I4_1 : OpCodes.Ldc_I4_0;
 
                 // -----------------------
                 // 保存 DLL

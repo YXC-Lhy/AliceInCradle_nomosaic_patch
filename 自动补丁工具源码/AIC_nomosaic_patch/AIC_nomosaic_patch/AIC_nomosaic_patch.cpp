@@ -128,7 +128,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 将实例句柄存储在全局变量中
 
-   hWnd = CreateWindowW(szWindowClass, L"Alice In Cradle 补丁工具 v1.1.0"/*szTitle*/, WS_OVERLAPPEDWINDOW & ~WS_THICKFRAME & ~WS_MAXIMIZEBOX,
+   hWnd = CreateWindowW(szWindowClass, L"Alice In Cradle 补丁工具 v1.1.1"/*szTitle*/, WS_OVERLAPPEDWINDOW & ~WS_THICKFRAME & ~WS_MAXIMIZEBOX,
       CW_USEDEFAULT, 0, 500, 420, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
