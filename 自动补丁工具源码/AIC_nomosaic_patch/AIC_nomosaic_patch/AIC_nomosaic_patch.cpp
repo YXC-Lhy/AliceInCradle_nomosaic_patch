@@ -128,7 +128,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 将实例句柄存储在全局变量中
 
-   hWnd = CreateWindowW(szWindowClass, L"Alice In Cradle 补丁工具 v1.1.1"/*szTitle*/, WS_OVERLAPPEDWINDOW & ~WS_THICKFRAME & ~WS_MAXIMIZEBOX,
+   hWnd = CreateWindowW(szWindowClass, L"Alice In Cradle 补丁工具 v1.1.2"/*szTitle*/, WS_OVERLAPPEDWINDOW & ~WS_THICKFRAME & ~WS_MAXIMIZEBOX,
       CW_USEDEFAULT, 0, 500, 420, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
@@ -273,6 +273,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 //DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
                 ShellExecute(NULL, L"open", L"https://github.com/YXC-Lhy/AliceInCradle_nomosaic_patch",
                     NULL, NULL, SW_SHOWNORMAL);
+                break;
+            case ID_32772:
+                MessageBox(hWnd, L"补丁工具版本：v1.1.2\n发布日期：2026年5月15日\n兼容游戏版本：已发布的所有版本及未来版本\n编译器：VS2019（ C++ 17 、.NET Framework 4.7.2）", L"版本信息", MB_OK | MB_ICONINFORMATION);
                 break;
             case ID_32771:
                 ShellExecute(NULL, L"open", L"https://github.com/YXC-Lhy/AliceInCradle_nomosaic_patch/blob/main/README.md",

@@ -157,6 +157,10 @@
     <Image Include="AIC_nomosaic_patch.ico" />
     <Image Include="small.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="AIC_nomosaic_patch_cmd.exe" />
+    <None Include="dnlib.dll" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

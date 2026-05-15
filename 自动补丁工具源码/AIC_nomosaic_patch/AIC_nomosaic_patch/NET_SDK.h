@@ -196,17 +196,17 @@ bool patch(const std::wstring& cmdPath,
         std::wstring aaaaa = GamePath + L"\\AliceInCradle_Data\\Managed\\assemblycsharptemp.dll";
         HANDLE hFile = CreateFileW(aaaaa.c_str(), GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
         if (hFile == INVALID_HANDLE_VALUE) {
-            MessageBox(hWnd, L"²¹¶¡Éú³ÉÊ§°Ü", L"´íÎó", MB_OK | MB_ICONHAND);
+            MessageBox(hWnd, L"²¹¶¡Éú³ÉÊ§°Ü\n´íÎóÐÅÏ¢£º²¹¶¡ÎÄ¼þÎ´Éú³É", L"´íÎó", MB_OK | MB_ICONHAND);
             return false; // ´ò²»¿ªÎÄ¼þ
         }
         LARGE_INTEGER size;
         bool ok = GetFileSizeEx(hFile, &size);
         CloseHandle(hFile);
         if (!ok) {
-            MessageBox(hWnd, L"²¹¶¡Éú³ÉÊ§°Ü", L"´íÎó", MB_OK | MB_ICONHAND);
+            MessageBox(hWnd, L"²¹¶¡Éú³ÉÊ§°Ü\n´íÎóÐÅÏ¢£ºÎÞ·¨»ñÈ¡²¹¶¡´óÐ¡", L"´íÎó", MB_OK | MB_ICONHAND);
             return false;
         }
-        if (size.QuadPart > 4 * 1024 * 1024) {
+        if (size.QuadPart > 0.75 * 1024 * 1024) {
             if (CopyFileW(aaaaa.c_str(), dllPath.c_str(), FALSE)) {
                 DeleteFile(aaaaa.c_str());
                 return true;
@@ -214,13 +214,13 @@ bool patch(const std::wstring& cmdPath,
             else {
                 //std::wcout << L"¸´ÖÆÊ§°Ü£¬´íÎóÂë£º" << GetLastError() << L"\n";
                 DeleteFile(aaaaa.c_str());
-                MessageBox(hWnd, L"Ð´ÈëÊ§°Ü¡£", L"´íÎó", MB_OK | MB_ICONHAND);
+                MessageBox(hWnd, L"Ð´ÈëÊ§°Ü¡£\n´íÎóÐÅÏ¢£º²¹¶¡Ð´ÈëÓÎÏ·Ê§°Ü", L"´íÎó", MB_OK | MB_ICONHAND);
                 return false;
             }
             
         }
         DeleteFile(aaaaa.c_str());
-        MessageBox(hWnd, L"²¹¶¡Éú³ÉÊ§°Ü", L"´íÎó", MB_OK | MB_ICONHAND);
+        MessageBox(hWnd, L"²¹¶¡Éú³ÉÊ§°Ü\n´íÎóÐÅÏ¢£º²¹¶¡ÎÄ¼þ´óÐ¡´íÎó£¬ÇëÁªÏµ²¹¶¡×÷Õß", L"´íÎó", MB_OK | MB_ICONHAND);
         return false;
     }
     else {
@@ -243,6 +243,7 @@ bool patch(const std::wstring& cmdPath,
             return false;
         }
         else {
+            result = "·¢ÉúÎ´Öª´íÎó£¬ÇëÁªÏµ²¹¶¡×÷Õß\n´íÎóÐÅÏ¢£º" + result;
             MessageBoxA(NULL, result.c_str(), "´íÎó", MB_OK | MB_ICONHAND);
             return false;
         }
@@ -250,14 +251,14 @@ bool patch(const std::wstring& cmdPath,
         std::wstring aaaaa = GamePath + L"\\AliceInCradle_Data\\Managed\\assemblycsharptemp.dll";
         HANDLE hFile = CreateFileW(aaaaa.c_str(), GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
         if (hFile == INVALID_HANDLE_VALUE) {
-            MessageBox(hWnd, L"²¹¶¡Éú³ÉÊ§°Ü", L"´íÎó", MB_OK | MB_ICONHAND);
+            MessageBox(hWnd, L"²¹¶¡Éú³ÉÊ§°Ü\n´íÎóÐÅÏ¢£º²¹¶¡ÎÄ¼þÎ´Éú³É", L"´íÎó", MB_OK | MB_ICONHAND);
             return false; // ´ò²»¿ªÎÄ¼þ
         }
         LARGE_INTEGER size;
         bool ok = GetFileSizeEx(hFile, &size);
         CloseHandle(hFile);
         if (!ok) {
-            MessageBox(hWnd, L"²¹¶¡Éú³ÉÊ§°Ü", L"´íÎó", MB_OK | MB_ICONHAND);
+            MessageBox(hWnd, L"²¹¶¡Éú³ÉÊ§°Ü\n´íÎóÐÅÏ¢£ºÎÞ·¨»ñÈ¡²¹¶¡´óÐ¡", L"´íÎó", MB_OK | MB_ICONHAND);
             return false;
         }
         if (size.QuadPart > 4 * 1024 * 1024) {
@@ -268,13 +269,13 @@ bool patch(const std::wstring& cmdPath,
             else {
                 //std::wcout << L"¸´ÖÆÊ§°Ü£¬´íÎóÂë£º" << GetLastError() << L"\n";
                 DeleteFile(aaaaa.c_str());
-                MessageBox(hWnd, L"Ð´ÈëÊ§°Ü¡£", L"´íÎó", MB_OK | MB_ICONHAND);
+                MessageBox(hWnd, L"Ð´ÈëÊ§°Ü¡£\n´íÎóÐÅÏ¢£º²¹¶¡Ð´ÈëÓÎÏ·Ê§°Ü", L"´íÎó", MB_OK | MB_ICONHAND);
                 return false;
             }
 
         }
         DeleteFile(aaaaa.c_str());
-        MessageBox(hWnd, L"²¹¶¡Éú³ÉÊ§°Ü", L"´íÎó", MB_OK | MB_ICONHAND);
+        MessageBox(hWnd, L"²¹¶¡Éú³ÉÊ§°Ü\n´íÎóÐÅÏ¢£º²¹¶¡ÎÄ¼þ´óÐ¡´íÎó£¬ÇëÁªÏµ²¹¶¡×÷Õß", L"´íÎó", MB_OK | MB_ICONHAND);
         return false;
     }
 
